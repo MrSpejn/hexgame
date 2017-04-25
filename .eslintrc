@@ -15,7 +15,8 @@
 		"indent": ["error", "tab"],
 		"quotes": ["error", "double"],
 		"semi": ["error", "always"],
-		"no-console": "off"
+		"no-console": "off",
+		"react/jsx-uses-vars": 2
 	},
 	"plugins": [
     	"react"
