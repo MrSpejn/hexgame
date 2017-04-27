@@ -8,7 +8,8 @@
         }
     },
 	"env": {
-        "browser": true
+        "browser": true,
+		"node": true
     },
 	"extends": "eslint:recommended",
 	"rules": {
@@ -16,7 +17,8 @@
 		"quotes": ["error", "double"],
 		"semi": ["error", "always"],
 		"no-console": "off",
-		"react/jsx-uses-vars": 2
+		"react/jsx-uses-vars": 2,
+		"no-unused-vars": "off"
 	},
 	"plugins": [
     	"react"
