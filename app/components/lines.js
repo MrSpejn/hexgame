@@ -9,7 +9,7 @@ import { pointToString } from "./point";
 
 /** @type {number} **/
 /**  Module global accuracy **/
-const accuracy = 4;
+const accuracy = 2;
 
 /**
 	Create an array of outlines which are the array of lines sorted in a way
@@ -87,6 +87,8 @@ export function onlySingleLines(lines) {
 	@return { Line[] }
 **/
 export function mapPointsToLines(points) {
+	if (points.length < 2) throw "Not enought points to create line";
+	if (points.length == 2) return [[points[0], points[1]]];
 	return points.map((p, i) => [p, points[(i+1)%points.length]]);
 }
 
@@ -116,8 +118,9 @@ export function linesEqual([p1, p2], [p3, p4]) {
 	@param { Line[] } lines - an array of lines to convert
 	@return { string }
 **/
-export function linesToPathString(lines) {
-	const pointsOfInterest = lines.map(l => pointToString(l[0]));
+export function outlineToPathString(outline) {
+	if (!outline.length) throw "Outline cannot be empty";
+	const pointsOfInterest = [ ...outline.map(l => pointToString(l[0])), pointToString(outline[outline.length-1][1])];
 	return `M ${pointsOfInterest.join(" L ")} Z`;
 }
 
@@ -134,8 +137,6 @@ function indexOf([p1, p2], point) {
 	return -1;
 }
 
-
-
 /**
 	Returns square distance between points.
 	@param { Point } p1
@@ -144,4 +145,14 @@ function indexOf([p1, p2], point) {
 **/
 function distSquared({x:x1, y:y1}, {x:x2, y:y2}) {
 	return (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2);
+}
+
+export let _indexOf;
+export let _getOutlineFromLines;
+export let _distSquared;
+
+if (process && process.env.testing) {
+	_indexOf = indexOf;
+	_getOutlineFromLines = getOutlineFromLines;
+	_distSquared = distSquared;
 }
