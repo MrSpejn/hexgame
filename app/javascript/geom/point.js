@@ -20,3 +20,12 @@
 export function pointToString(point, delimeter = " ") {
 	return Math.round(point.x) + delimeter + Math.round(point.y);
 }
+
+/**
+	Returns SVG Polygon element string created from array of points
+	@param { Point[] } points
+	@return { string }
+**/
+export function pointsToSVGPolygonString(points) {
+	return points.map(point => pointToString(point, ",")).join(" ");
+}
