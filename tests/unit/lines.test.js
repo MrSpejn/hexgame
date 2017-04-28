@@ -1,5 +1,5 @@
 const chai = require('chai');
-const Lines = require('../../app/components/lines');
+const Lines = require('../../app/javascript/geom/lines');
 const expect = chai.expect;
 
 describe('Lines', () => {
@@ -166,7 +166,7 @@ describe('Lines', () => {
 				[{x: 11.7, y: 23}, {x: 6.9, y: 2.9}],
 				[{x: -8, y: -1}, {x: 3.5 , y: 2.2 }]
 			];
-			
+
 			const outlines = Lines.linesToOutlines(lines);
 			expect(outlines).to.have.property('length').equal(2);
 			expect(outlines[0]).to.have.property('length').equal(3);

@@ -1,5 +1,5 @@
 const chai = require('chai');
-const Point = require('../../app/components/point');
+const Point = require('../../app/javascript/geom/point');
 const expect = chai.expect;
 
 describe('point', () => {

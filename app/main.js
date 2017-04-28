@@ -4,7 +4,7 @@ import React from "react";
 /*eslint-enable no-unused-vars*/
 import ReactDOM from "react-dom";
 
-import MainComponent from "./components/main.component.js";
+import MainComponent from "./javascript/components/main.component.js";
 
 
 
