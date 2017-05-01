@@ -29,3 +29,12 @@ export function pointToString(point, delimeter = " ") {
 export function pointsToSVGPolygonString(points) {
 	return points.map(point => pointToString(point, ",")).join(" ");
 }
+
+/**
+	Returns SVG Path element string created from array of points
+	@param { Point[] } points
+	@return { string }
+**/
+export function pointsToSVGPathString(points) {
+	return "M " + points.map(point => pointToString(point, " ")).join(" L ") + " Z";
+}

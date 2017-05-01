@@ -9,7 +9,7 @@ import { pointToString } from "./point";
 
 /** @type {number} **/
 /**  Module global accuracy **/
-const accuracy = 2;
+const accuracy = 8;
 
 /**
 	Create an array of outlines which are the array of lines sorted in a way
@@ -143,7 +143,7 @@ function indexOf([p1, p2], point) {
 	@param { Point } p2
 	@return { number }
 **/
-function distSquared({x:x1, y:y1}, {x:x2, y:y2}) {
+export function distSquared({x:x1, y:y1}, {x:x2, y:y2}) {
 	return (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2);
 }
 
