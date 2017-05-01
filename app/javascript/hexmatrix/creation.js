@@ -17,7 +17,7 @@ export function createGeneralHexMatrix(nrows, ncols, start, equal) {
 	const hexmartix = createHexMatrix(nrows, ncols, start, equal, (row, col) => {
 		return createGeneralMatrixElement(row, col);
 	});
-	hexmartix._hexmatrixType = "general";
+	hexmartix._meta.hexmatrixType = "general";
 	return hexmartix;
 }
 
@@ -37,7 +37,7 @@ export function createCustomHexMatrix(nrows, ncols, occurance, start, equal) {
 		}
 		return null;
 	});
-	hexmartix._hexmatrixType = "custom";
+	hexmartix._meta.hexmatrixType = "custom";
 	return hexmartix;
 }
 
@@ -61,7 +61,7 @@ export function createSimpleHexMatrix(size) {
 		return createSimpleMatrixElement(row, col, cRow, cCol);
 	});
 
-	hexmartix._hexmatrixType = "simple";
+	hexmartix._meta.hexmatrixType = "simple";
 	return hexmartix;
 }
 
@@ -94,6 +94,7 @@ function createHexMatrix(nrows, ncols, start = 0, equal = true, createFn) {
 			}
 		}
 	}
+	matrix._meta = {};
 	return matrix;
 }
 /**

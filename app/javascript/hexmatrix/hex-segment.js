@@ -1,6 +1,6 @@
-import _ from 'lodash';
-import { linesToOutlines, onlySingleLines, mapPointsToLines } from '../geom/lines';
-import { haveInSetAdjacent } from './hex';
+import _ from "lodash";
+import { linesToOutlines, onlySingleLines } from "../geom/lines";
+import { haveInSetAdjacent } from "./hex";
 /** @module hexmatrix/hex-segment **/
 
 /**
@@ -29,7 +29,7 @@ export function isSetValidSegment(hexmatrix, set) {
 }
 
 /**
-	Return an array of outlines associated with a segment.
+	Return an array of outlines associated with a segment. Outlines should be sorted from shortest to longest
 	@param { HexMartix } hexmatrix - matrix from which segment is taken
 	@param { HexSegment } segment - segment of hexes
 	@param { boolean } checkValidity - flag indicating whether segment should be check for validity before calculating outlines
@@ -39,6 +39,6 @@ export function getSegmentOutlines(hexmatrix, segment, checkValidity = true) {
 	if (checkValidity && !isSetValidSegment(hexmatrix, segment))
 		throw "Invalid segment";
 
-	const lines = _.flatten(segment.map(hex => mapPointsToLines(hex.vertices)));
-	return linesToOutlines(onlySingleLines(lines));
+	const lines = _.flatten(segment.map(hex => hex.lines));
+	return _.sortBy(linesToOutlines(onlySingleLines(lines)), "length");
 }
