@@ -129,30 +129,30 @@ describe('Lines', () => {
 	describe('getOutlineFromLines', () => {
 		it('should compose outline from lines', () => {
 			const lines = [
-				[{x: 12.4, y: 13.2}, {x: 7.3,y: 3.4}],
-				[{x: 8, y: 1}, {x: 4.1, y: 2.1 }],
-				[{x: 11.7, y: 23}, {x: 6.9, y: 2.9}],
-				[{x: -8, y: -1}, {x: 3.2 , y: 2.2 }]
+				[{x: 124.4, y: 132.2}, {x: 70.3,y: 31.4}],
+				[{x: 80, y: 10}, {x: 41.1, y: 21.1 }],
+				[{x: 117.7, y: 230}, {x: 69.9, y: 29.9}],
+				[{x: -80, y: -10}, {x: 32.2 , y: 22.2 }]
 			];
 
 			const [outline, _x] =  Lines._getOutlineFromLines(lines);
 			expect(outline).to.be.deep.equal([
-				[{x: 12.4, y: 13.2}, {x: 7.3,y: 3.4}],
-				[{x: 6.9, y: 2.9}, {x: 11.7, y: 23}]
+				[{x: 124.4, y: 132.2}, {x: 70.3,y: 31.4}],
+				[{x: 69.9, y: 29.9}, {x: 117.7, y: 230 }]
 			]);
 		});
 		it('should return rest lines which do not fit outline', () => {
 			const lines = [
-				[{x: 12.4, y: 13.2}, {x: 7.3,y: 3.4}],
-				[{x: 8, y: 1}, {x: 4.1, y: 2.1 }],
-				[{x: 11.7, y: 23}, {x: 6.9, y: 2.9}],
-				[{x: -8, y: -1}, {x: 3.2 , y: 2.2 }]
+				[{x: 124.4, y: 132.2}, {x: 70.3,y: 31.4}],
+				[{x: 80, y: 10}, {x: 41.1, y: 21.1 }],
+				[{x: 117.7, y: 230}, {x: 69.9, y: 29.9}],
+				[{x: -80, y: -10}, {x: 32.2 , y: 22.2 }]
 			];
 
 			const [_x, rest] =  Lines._getOutlineFromLines(lines);
 			expect(rest).to.be.deep.equal([
-				[{x: 8, y: 1}, {x: 4.1, y: 2.1 }],
-				[{x: -8, y: -1}, {x: 3.2 , y: 2.2 }]
+				[{x: 80, y: 10}, {x: 41.1, y: 21.1 }],
+				[{x: -80, y: -10}, {x: 32.2 , y: 22.2 }]
 			]);
 		});
 	});
@@ -160,11 +160,11 @@ describe('Lines', () => {
 	describe('linesToOutlines', () => {
 		it('should return correct number of outlines using all the lines', () => {
 			const lines = [
-				[{x: 12.4, y: 13.2}, {x: 7.3,y: 3.4}],
-				[{x: 12, y: 22.8}, {x: -12, y: -7 }],
-				[{x: 8, y: 1}, {x: 4.1, y: 2.1 }],
-				[{x: 11.7, y: 23}, {x: 6.9, y: 2.9}],
-				[{x: -8, y: -1}, {x: 3.5 , y: 2.2 }]
+				[{x: 124.4, y: 132.2}, {x: 70.3,y: 31.4}],
+				[{x: 120, y: 228.8}, {x: -120, y: -70 }],
+				[{x: 80, y: 10}, {x: 37.1, y: 21.1 }],
+				[{x: 117.7, y: 230}, {x: 69.9, y: 29.9}],
+				[{x: -80, y: -10}, {x: 35.5 , y: 22.2 }]
 			];
 
 			const outlines = Lines.linesToOutlines(lines);

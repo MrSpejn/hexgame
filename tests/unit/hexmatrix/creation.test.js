@@ -46,6 +46,12 @@ describe('HexMatrix', () => {
 
 			expect(occurance).to.be.deep.equal(expected);
 		});
+
+		it('should provide general hexmatrix with metadata according hexmarix type', () => {
+			const matrix = HexMatrix.createGeneralHexMatrix(4, 4);
+			expect(matrix._meta).to.be.an('object');
+			expect(matrix._meta.hexmatrixType).to.equal('general');
+		});
 	});
 
 	describe('createCustomHexMatrix', () => {
@@ -55,7 +61,7 @@ describe('HexMatrix', () => {
 				[true, true, FALSE, FALSE ],
 				[FALSE, true, true, FALSE],
 				[true, true, true, true]
-			]
+			];
 			const expected = [
 				[ true, FALSE, true, FALSE, FALSE, FALSE, FALSE, FALSE ],
 				[ FALSE, FALSE, FALSE, true, FALSE, true, FALSE, FALSE ],
@@ -67,6 +73,17 @@ describe('HexMatrix', () => {
 			const occurance = matrix.map(row => row.map( hex => hex != null));
 
 			expect(occurance).to.be.deep.equal(expected);
+		});
+		it('should provide custom hexmatrix with metadata according hexmarix type', () => {
+			const insertMatrix = [
+				[true, true, FALSE, FALSE ],
+				[FALSE, true, true, FALSE],
+				[true, true, true, true]
+			];
+			const matrix = HexMatrix.createCustomHexMatrix(4, 4, insertMatrix);
+
+			expect(matrix._meta).to.be.an('object');
+			expect(matrix._meta.hexmatrixType).to.equal('custom');
 		});
 	});
 
@@ -117,6 +134,12 @@ describe('HexMatrix', () => {
 		it ('should throw error when invalid size supplied', () => {
 			expect(() => HexMatrix.createSimpleHexMatrix(1)).to.throw();
 			expect(() => HexMatrix.createSimpleHexMatrix(6)).to.throw();
+		});
+		it('should provide simple hexmatrix with metadata according hexmarix type', () => {
+			const matrix = HexMatrix.createSimpleHexMatrix(5);
+			expect(matrix._meta).to.be.an('object');
+			expect(matrix._meta.hexmatrixType).to.equal('simple');
+
 		});
 	});
 

@@ -9,8 +9,8 @@ describe('Hex Matrix Manipulation', () => {
 			const matrix = HexMatrix.createGeneralHexMatrix(4, 6);
 
 			const list = Manipulation.hexMatrixToList(matrix);
-			expect(list).to.be.instanceof(Array);
-			expect(list).to.have.lengthOf(24);
+			expect(list).to.be.instanceof(Manipulation.HexList);
+			expect(list.length());
 			list.forEach(el => {
 				expect(el).to.be.an('object');
 				expect(el).to.have.property('row').that.is.a('number');
